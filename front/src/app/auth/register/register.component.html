@@ -1,0 +1,64 @@
+
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+          <img class="mx-auto h-30 w-auto" src="assets/image-building.jpg" alt="Your Company">
+          <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-secondary">Crea Tu cuenta</h2>
+        </div>
+      
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form class="space-y-6" [formGroup]="registerForm">
+            <div>
+              <label for="email" class="block text-sm font-medium leading-6 text-secondary">Email</label>
+              <div class="mt-2">
+                <input formControlName="email"  id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 px-1.5 py-1.5 text-secondary shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              </div>
+              <div class="text-sm font-medium text-likes pt-1" *ngIf="registerForm.get('email')?.hasError('email') || registerForm.get('email')?.hasError('required') &&     this.registerForm.get('email')?.touched"  >
+                El correo no es correcto
+            </div>
+            </div>
+
+      
+            <div>
+              <div class="flex items-center justify-between">
+                <label for="password" class="block text-sm font-medium leading-6 text-secondary">Password</label>
+                <div class="text-sm">
+                
+                </div>
+              </div>
+              <div class="mt-2">
+                <input formControlName="password"  id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 px-1.5 py-1.5 text-secondary shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              </div>
+              <div class="text-sm font-medium text-likes pt-1" *ngIf="registerForm.get('password')?.hasError('required') &&   this.registerForm.get('password')?.touched"  >
+                Escribe el password
+            </div>
+            </div>
+            <button (click)="showDropdown()" id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-gray hover:bg-blue-800 w-full justify-center focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+             Role del usuario <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+              </svg>
+               {{this.registerForm.get('role')?.value==='building'  ? 'Constructor':'' }}
+               {{this.registerForm.get('role')?.value==='proovider'  ? 'Provedor':'' }}
+            </button>
+            <div class="text-sm font-medium text-likes pt-1" *ngIf="registerForm.get('role')?.hasError('required') &&   this.registerForm.get('role')?.touched"  >
+              Selecciona un role
+          </div>
+              <!-- Dropdown menu -->
+              <div id="dropdown" *ngIf="showDropDawn" class="z-10 w-full  bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                    <li>
+                      <a (click)="saveRole('building')" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Constructor</a>
+                    </li>
+                    <li>
+                      <a (click)="saveRole('proovider')" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Provedor</a>
+                    </li>
+                  </ul>
+              </div>
+            <div>
+              <button (click)="registerAPi()" type="submit" class="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Registrarme</button>
+            </div>
+          </form>
+      
+        
+        </div>
+      </div>
+  

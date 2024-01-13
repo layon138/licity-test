@@ -1,0 +1,15 @@
+
+  @defer () {
+    <ul role="list" class=" flex justify-center list-b">
+        <li  *ngFor="let item of listBuildinProject; let i=index">
+         <app-card-info [project]="item"></app-card-info>
+     
+        </li>
+       </ul>
+  }
+  @loading(minimum 1s) {
+    <div class="flex justify-center">
+        <span>Loading...</span>
+    </div>
+
+  }

@@ -1,0 +1,31 @@
+<div class="flex min-w-0 gap-x-4 m-2 p-1 bg-white card-building">
+
+  <div class="min-w-0 flex-auto">
+    <div *ngFor="let image of project.imagesReference; let i=index">
+      <img class="h-max-30 flex-none pb-1 w-full  rounded-t-xl bg-transparent" *ngIf="currentImage===i" [src]="image.image" alt="">
+    </div> 
+    <div class="flex justify-center mt-1 mb-1" *ngIf="project.imagesReference.length>1">
+      <img class="h-auto mt-0 mr-2 ml-2 flex-none w-5 icon-left"   (click)="changeImage('left')"  *ngIf="currentImage!=0"  src="assets/noun-arrow-3134098.svg" alt="">
+
+      <img class="h-auto mt-0 mr-2 ml-2 flex-none w-5 "  *ngIf="currentImage< project.imagesReference.length" (click)="changeImage('right')" src="assets/noun-arrow-3134098.svg" alt="">
+         </div>
+      <div class="bg-primary p-1 m-top-3 flex-auto rounded-b-xl">
+      <div class="flex justify-between">
+        <p class="text-m font font-semibold leading-6 text-gray-900">{{project.name}}</p>
+        <p class="text-m font font-semibold leading-6 text-success">{{project.unitValue | currency}}</p>
+      </div>
+     
+      <div class="flex justify-between">
+          <p class="mt-0 truncate text-s leading-5 text-gray">{{project.dateStart | date : "dd/MM/YYYY"}}</p>
+          <img class="h-auto mt-0 mr-1 ml-1 flex-none w-5"  src="assets/noun-start-5140093.svg" alt="">
+          <p class="mt-0 truncate text-s leading-5 text-gray">{{project.dateEnd  | date : "dd/MM/YYYY"}}</p>
+      </div>
+      <div class="mt-1 pl-1" *ngFor="let item of project.items">
+          <p class="mt-1 truncate text-sm leading-5 text-gray-900">* {{item.description}}</p>
+      </div>
+     
+   
+    </div>
+ 
+  </div>
+</div>

@@ -1,0 +1,16 @@
+.card-building{
+    width: 420px;
+    @media (max-width: 450px) {
+        width: 260px;
+      }
+    height: auto;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+    transition: 0.2s ease-in-out;
+}
+
+.icon-left{
+    transform: rotate(
+        180deg);
+}
